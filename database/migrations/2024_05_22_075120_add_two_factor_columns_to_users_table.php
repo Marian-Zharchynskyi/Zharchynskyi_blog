@@ -35,12 +35,20 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(array_merge([
+            $columnsToDrop = [
                 'two_factor_secret',
                 'two_factor_recovery_codes',
-            ], Fortify::confirmsTwoFactorAuthentication() ? [
-                'two_factor_confirmed_at',
-            ] : []));
+            ];
+
+            if (Fortify::confirmsTwoFactorAuthentication()) {
+                $columnsToDrop[] = 'two_factor_confirmed_at';
+            }
+
+            foreach ($columnsToDrop as $column) {
+                if (Schema::hasColumn('users', $column)) {
+                    $table->dropColumn($column);
+                }
+            }
         });
     }
 };
