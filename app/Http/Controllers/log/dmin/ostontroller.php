@@ -1,35 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Blog;
+namespace App\Http\Controllers\log\dmin;
 
-use App\Repositories\BlogPostRepository;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\BlogPost;
 
-class PostController extends BaseController
+class ostontroller extends Controller
 {
-    /**
-     * @var BlogPostRepository
-     */
-    private $blogPostRepository;
-
-    public function __construct()
-    {
-        parent::__construct();
-        $this->blogPostRepository = app(BlogPostRepository::class); //app вертає об'єкт класа
-    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $items = BlogPost::all();
-
-        $paginator = $this->blogPostRepository->getAllWithPaginate();
-
-        return view('blog.admin.posts.index', compact('paginator'));
-
-
+        //
     }
 
     /**

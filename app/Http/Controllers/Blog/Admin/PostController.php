@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Blog;
+namespace App\Http\Controllers\Blog\Admin;
 
 use App\Repositories\BlogPostRepository;
+
 use Illuminate\Http\Request;
-use App\Models\BlogPost;
 
 class PostController extends BaseController
 {
+
     /**
      * @var BlogPostRepository
      */
@@ -23,13 +24,9 @@ class PostController extends BaseController
      */
     public function index()
     {
-        $items = BlogPost::all();
-
         $paginator = $this->blogPostRepository->getAllWithPaginate();
 
         return view('blog.admin.posts.index', compact('paginator'));
-
-
     }
 
     /**
