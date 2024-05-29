@@ -15,7 +15,7 @@ class PostController extends BaseController
 
     public function __construct()
     {
-        parent::__construct();
+
         $this->blogPostRepository = app(BlogPostRepository::class); //app вертає об'єкт класа
     }
     /**
