@@ -15,7 +15,7 @@ class GenerateCatalogMainJob extends AbstractJob
         $this->debug('start');
 
         // Спочатку кешуємо продукти
-        GenerateCatalogCacheJob::dispatchNow();
+        GenerateCatalogCacheJob::dispatch();
 
         // Створюємо ланцюг завдань формування файлів з цінами
         $chainPrices = $this->getChainPrices();
