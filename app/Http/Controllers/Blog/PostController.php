@@ -28,8 +28,6 @@ class PostController extends BaseController
         $paginator = $this->blogPostRepository->getAllWithPaginate();
 
         return view('blog.admin.posts.index', compact('paginator'));
-
-
     }
 
     /**
